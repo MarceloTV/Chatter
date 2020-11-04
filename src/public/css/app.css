@@ -1,0 +1,65 @@
+.my-servers{
+    background: var(--second);
+    border: var(--main) 2px solid;
+    border-radius: 10px;
+    padding: 20px;
+    width: 35%;
+    align-self: center;
+}
+
+
+.my-servers form select{
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    border: solid 1px var(--main);
+    border-radius: 10px;
+    font-size: 36px;
+    color: rgba(0, 0, 0, .57);
+}
+
+.my-servers form select,.my-servers form button{
+    font-family: 'ubuntu_regular';
+    display: block;
+}
+
+.my-servers form button{
+    width: 35%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.login-server{
+    margin-top: 100px;
+}
+
+.create-server,.login-server{
+    background: var(--second);
+    border: var(--main) 2px solid;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.create-server h2,.login-server h2,.my-servers h2{
+    font-family: 'ubuntu_regular';
+    font-size: 48px;
+    color: var(--main);
+    text-align: center;
+}
+
+.create-server form input,.login-server form input{
+    font-family: 'ubuntu_regular';
+    font-size: 27px;
+    display: block;
+    border: var(--main) solid 1px;
+    border-radius: 10px;
+    padding: 5px 0;
+    padding-left: 2px;
+    margin: 10px 0;
+}
+
+.create-server form button,
+.login-server form button{
+    display: block;
+    margin: auto;
+}

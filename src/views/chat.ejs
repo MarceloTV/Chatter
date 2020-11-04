@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatter</title>
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
+    
+    <!--CSS styles-->
+    <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+    <div class="container">
+        <div class="users">
+            <h2>Users connected</h2>
+            <div class="users-container" id="users-container">
+            </div>
+        </div>
+        <div class="chat">
+            <div class="chat-messages" id="chat-messages"></div>
+
+            <form id="form">
+                <input type="text" name="msg" placeholder="type your message">
+                <button type="submit">Send</button>
+            </form>
+        </div>
+        <div class="me">
+            <div class="user_img">
+                <img src="/img/account.png" alt="account">
+                <h1><%= user.name%></h1>
+            </div>
+
+            <div class="buttons">
+                <a href="/app">Home</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </div>
+    <input style="display: none;" type="text" id="server_id" readonly disabled value='<%= server._id%>'>
+    <input style="display: none;" type="text" id="user_id"  readonly disabled value='<%= user._id%>'>
+    <input style="display: none;" type="text"  id="user_name" readonly disabled value='<%= user.name%>'>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/app.js"></script>
+</html>

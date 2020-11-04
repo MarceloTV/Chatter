@@ -1,0 +1,130 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --main: #182DE8;
+    --second: #C4C4C4;
+}
+
+/* Fonts in CSS */
+
+@font-face{
+    src: url(../fonts/ubuntu/Ubuntu-Bold.ttf);
+    font-family: 'ubuntu_bold';
+}
+
+@font-face{
+    src: url(../fonts/ubuntu/Ubuntu-Regular.ttf);
+    font-family: 'ubuntu_regular';
+}
+
+@font-face{
+    src: url(../fonts/ubuntu/Ubuntu-Medium.ttf);
+    font-family: 'ubuntu_medium';
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--main) 0 0 4px;
+}
+
+.logo{
+    font-family: 'ubuntu_bold';
+    font-size: 48px;
+    color: var(--main);
+    margin: 0 0 0 10px;
+}
+
+.menu a{
+    font-family: 'ubuntu_regular';
+    font-size: 36px;
+    text-decoration: none;
+    color: var(--main);
+    padding: 10px;
+}
+
+main{
+    width: 100%;
+}
+
+.container{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login,.signup{
+    background: var(--second);
+    border: solid 3px var(--main);
+    padding: 10px;
+    border-radius: 10px;
+    width: 40%;
+    color: var(--main);
+    padding-bottom: 100px;
+    margin-top: 100px;
+}
+
+.login h1,.signup h1{
+    font-family: 'ubuntu_bold';
+    font-size: 48px;
+}
+
+.login p,.signup p{
+    font-family: 'ubuntu_medium';
+    font-size: 24px;
+}
+
+.login form,.signup form{
+    margin-top: 40px;   
+}
+
+.login form input,.signup form input{
+    display: block;
+    margin: 10px 0;
+}
+
+.login form input[type='email'],
+.login form input[type='password'],
+.signup form input[type='email'],
+.signup form input[type='password'],
+.signup form input[type='text']{
+    width: 60%;
+    height: 38px;
+    padding: 0;
+    border: solid var(--main) 1.3px;
+    border-radius: 10px;
+    font-family: 'ubuntu_regular';
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.login form button,
+.signup form button,
+.my-servers form button,
+.create-server form button,
+.login-server form button{
+    padding: 5px;
+    display: block;
+    width: 25%;
+    background: var(--main);
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-family: 'ubuntu_regular';
+    font-size: 24px;
+    height: 38px;
+}
+
+.separation{
+    height: 720px;
+    position: absolute;
+    right: 50%;
+    width: 0.1px;
+    box-shadow: var(--main) 0 4px 4px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head')%>
+<body>
+    <header>
+        <h1 class="logo">Chatter</h1>
+        <nav class="menu">
+            <a href="/">About</a>
+            <a href="/">Contact</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="my-servers">
+                <h2>My server</h2>
+                <form action="/server" method="post">
+                    <select name="name">
+                        <option value="">My servers</option>
+                        <% user.servers.forEach(function(x){%>
+                            <option value=<%= x%>><%= x%></option>
+                        <%})%>
+                    </select>
+                    <button type="submit">Enter</button>
+                </form>
+            </div>
+
+            <div class="separation"></div>
+
+            <div class="op-servers">
+                <div class="create-server">
+                    <h2>Create server</h2>
+                    <form action="/create_server" method="post">
+                        <input type="text" name="name" placeholder="Type the name's server">
+                        <input type="password" name="password" placeholder="Type the password's server">
+                        <input type="text" style="display: none;" name="id" value=<%= user.id%>>
+                        <button type="submit">Apply</button>
+                    </form>
+                </div>
+
+                <div class="login-server">
+                    <h2>Login server</h2>
+                    <form action="/login_server" method="post">
+                        <input type="text" name="name" placeholder="Type the name's server">
+                        <input type="password" name="password" placeholder="Type the password's server">
+                        <input type="text" style="display: none;" name="id" value=<%= user.id%>>
+                        <button type="submit">Apply</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

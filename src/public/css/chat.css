@@ -1,0 +1,190 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --main: #182DE8;
+    --second: #C4C4C4;
+}
+
+/* Fonts in CSS */
+
+@font-face{
+    src: url(../fonts/ubuntu/Ubuntu-Bold.ttf);
+    font-family: 'ubuntu_bold';
+}
+
+@font-face{
+    src: url(../fonts/ubuntu/Ubuntu-Regular.ttf);
+    font-family: 'ubuntu_regular';
+}
+
+@font-face{
+    src: url(../fonts/ubuntu/Ubuntu-Medium.ttf);
+    font-family: 'ubuntu_medium';
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.container{
+    height: 700px;
+    width: 85%;
+    display: flex;
+    border: 1px solid var(--main);
+    border-collapse: collapse;
+}
+
+.users{
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border: var(--main) 1px solid;
+    width: 33.3%;
+}
+
+.users h2{
+    width: 100%;
+    font-size: 36px;
+    font-family: "ubuntu_bold";
+    text-align: center;
+    color: var(--main);
+}
+
+.users .users-container{
+    width: 100%;
+    height: 100%;
+    border: var(--main) 1px solid;
+    padding: 10px;
+    border-radius: 18px;
+}
+
+.users .users-container p{
+    font-family: 'ubuntu_regular';
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
+    border: var(--main) 1px solid;
+    color: var(--main);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.chat{
+    border: var(--main) 1px solid;
+    width: 33.3%;
+    align-self: stretch;
+    padding: 10px;
+}
+
+.chat-messages{
+    width: 100%;
+    height: 90%;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
+
+.messages{
+    padding: 10px;
+    color: var(--main);
+    background: #C4C4C4;
+    width: 55%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-family: 'ubuntu_regular';
+}
+
+.messages h4{
+    margin-bottom: 10px;
+}
+
+#form{
+    padding: 10px;
+    border: 1px solid var(--main);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#form input{
+    width: 85%;
+    border: solid 1px var(--main);
+    font-family: 'ubuntu_regular';
+}
+
+#form button{
+    background: var(--main);
+    color: #fff;
+    border: none;
+    font-family: 'ubuntu_regular';
+}
+
+#form input,#form button{
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Me */
+
+.me{
+    display: flex;
+    border: var(--main) 1px solid;
+    padding: 15px;
+    flex-direction: column;
+    width: 33.5%;
+    justify-content: space-between;
+}
+
+.me .user_img{
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.me .user_img img{
+    display: block;
+    width: 65%;
+    margin: auto;
+}
+
+.me .user_img h1{
+    font-family: 'ubuntu_regular';
+    font-size: 36px;
+    color: var(--main);
+}
+
+.buttons{
+    width: 100%;
+}
+
+.buttons a{
+    font-family: 'ubuntu_regular';
+    font-size: 24px;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--main);
+    border: var(--main) 1px solid;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 45%;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.buttons a:hover{
+    color: #fff;
+    background: var(--main);
+}
