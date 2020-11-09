@@ -1,6 +1,8 @@
-const { use } = require('passport')
 const Server = require('../models/server')
+//Socket server config
 const socket =  async (io) => {
+
+    //Servers search
     let serversSearch = await Server.find()
     let servers = serversSearch.map( v => {
         return {
@@ -11,8 +13,8 @@ const socket =  async (io) => {
     })
     let users = []
 
-
     io.on('connection', (socket) => {
+        //Servers Update
         Server.find().exec((err,docs) => {
             serversSearch = docs
             servers = docs.map( v => {
@@ -24,7 +26,7 @@ const socket =  async (io) => {
             })
         })
         
-
+        //New connection
         socket.on('conn',(data) => {
             const search = servers.findIndex(v => {
                 return v.serverId == data.server_id
@@ -46,9 +48,11 @@ const socket =  async (io) => {
 
             console.log(servers)
 
+            //Emit users connected to determinate server
             io.emit(`users-${data.server_id}`,servers[search].users)
         })
 
+        //Rev=cive and emit message
         socket.on('message', data => {
             io.emit(`msg-${data.path}`,{
                user: data.user,
@@ -56,7 +60,7 @@ const socket =  async (io) => {
             })
         })
 
-
+        //When a user is disconnected is remove to the serveres and user array then is emited to all servers :D
         socket.on('disconnect', reason => {
             let index = -1
             const searchUser= users.find(v => v.id == socket.id)

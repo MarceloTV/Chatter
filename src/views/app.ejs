@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!--Head-->
 <%- include('./partials/head')%>
+
 <body>
+
+    <!--Header-->
     <header>
         <h1 class="logo">Chatter</h1>
+
+        <!--Menu-->
         <nav class="menu">
             <a href="/">About</a>
             <a href="/">Contact</a>
             <a href="/logout">Logout</a>
         </nav>
     </header>
+
+    <!--Main-->
     <main>
+
+        <!--Container-->
         <div class="container">
+
+            <!--My servers-->
             <div class="my-servers">
                 <h2>My server</h2>
                 <form action="/server" method="post">
+
+                    <!--Server's List-->
                     <select name="name">
                         <option value="">My servers</option>
                         <% user.servers.forEach(function(x){%>
@@ -25,9 +40,13 @@
                 </form>
             </div>
 
+            <!--Separation-->
             <div class="separation"></div>
 
+            <!--Server Operations-->
             <div class="op-servers">
+
+                <!--Create the server-->
                 <div class="create-server">
                     <h2>Create server</h2>
                     <form action="/create_server" method="post">
@@ -38,6 +57,7 @@
                     </form>
                 </div>
 
+                <!--Enter in a server-->
                 <div class="login-server">
                     <h2>Login server</h2>
                     <form action="/login_server" method="post">
@@ -47,8 +67,11 @@
                         <button type="submit">Apply</button>
                     </form>
                 </div>
+
             </div>
+            
         </div>
+
     </main>
 </body>
 </html>

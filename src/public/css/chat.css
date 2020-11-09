@@ -1,3 +1,4 @@
+/*CSS chat.ejs*/
 *{
     padding: 0;
     margin: 0;
@@ -45,6 +46,7 @@ body{
     border-collapse: collapse;
 }
 
+/*Users Styles*/
 .users{
     align-self: stretch;
     display: flex;
@@ -81,6 +83,7 @@ body{
     margin-bottom: 10px;
 }
 
+/*Chat styles*/
 .chat{
     border: var(--main) 1px solid;
     width: 33.3%;
@@ -135,7 +138,7 @@ body{
     border-radius: 5px;
 }
 
-/* Me */
+/* My user Styles */
 
 .me{
     display: flex;

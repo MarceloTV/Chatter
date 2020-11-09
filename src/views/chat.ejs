@@ -10,12 +10,18 @@
     <link rel="stylesheet" href="/css/chat.css">
 </head>
 <body>
+
+    <!--Container-->
     <div class="container">
+
+        <!--Users connected-->
         <div class="users">
             <h2>Users connected</h2>
             <div class="users-container" id="users-container">
             </div>
         </div>
+
+        <!--Chat app-->
         <div class="chat">
             <div class="chat-messages" id="chat-messages"></div>
 
@@ -24,6 +30,8 @@
                 <button type="submit">Send</button>
             </form>
         </div>
+
+        <!--My user-->
         <div class="me">
             <div class="user_img">
                 <img src="/img/account.png" alt="account">
@@ -35,7 +43,10 @@
                 <a href="/logout">Logout</a>
             </div>
         </div>
+
     </div>
+
+    <!--User/Server data-->
     <input style="display: none;" type="text" id="server_id" readonly disabled value='<%= server._id%>'>
     <input style="display: none;" type="text" id="user_id"  readonly disabled value='<%= user._id%>'>
     <input style="display: none;" type="text"  id="user_name" readonly disabled value='<%= user.name%>'>

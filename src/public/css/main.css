@@ -1,3 +1,5 @@
+/*CSS app.ejs & index.ejs*/
+
 *{
     padding: 0;
     margin: 0;
@@ -33,6 +35,7 @@ header{
     box-shadow: var(--main) 0 0 4px;
 }
 
+/*Page Logo*/
 .logo{
     font-family: 'ubuntu_bold';
     font-size: 48px;
@@ -40,6 +43,7 @@ header{
     margin: 0 0 0 10px;
 }
 
+/*Page Menu*/
 .menu a{
     font-family: 'ubuntu_regular';
     font-size: 36px;
@@ -52,6 +56,8 @@ main{
     width: 100%;
 }
 
+/*container*/
+
 .container{
     width: 100%;
     padding: 20px;
@@ -59,6 +65,7 @@ main{
     justify-content: space-between;
 }
 
+/*Login and dignup server container*/
 .login,.signup{
     background: var(--second);
     border: solid 3px var(--main);
@@ -70,20 +77,23 @@ main{
     margin-top: 100px;
 }
 
+/*Login and signup h1*/
 .login h1,.signup h1{
     font-family: 'ubuntu_bold';
     font-size: 48px;
 }
-
+ /*Login and signup p*/
 .login p,.signup p{
     font-family: 'ubuntu_medium';
     font-size: 24px;
 }
 
+/*Login and Signup form*/
 .login form,.signup form{
     margin-top: 40px;   
 }
 
+/*Login and signup inputs*/
 .login form input,.signup form input{
     display: block;
     margin: 10px 0;
@@ -104,6 +114,7 @@ main{
     font-size: 18px;
 }
 
+/*index.ejs and app.ejs styles*/
 .login form button,
 .signup form button,
 .my-servers form button,
@@ -121,6 +132,7 @@ main{
     height: 38px;
 }
 
+/*Separation Line*/
 .separation{
     height: 720px;
     position: absolute;

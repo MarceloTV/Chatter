@@ -1,6 +1,7 @@
 const User = require('../models/user')
 const passport = require('passport')
 
+//Signup User
 const signup = (req,res) => {
     const {email,name,password} = req.body
 
@@ -30,6 +31,7 @@ const signup = (req,res) => {
     })
 }
 
+//Login User
 const login = (req,res,next) => {
     passport.authenticate('local', (err,user,info) => {
         if(err){

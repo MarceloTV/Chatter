@@ -1,3 +1,6 @@
+/*CSS app.ejs*/
+
+/*My severs container*/
 .my-servers{
     background: var(--second);
     border: var(--main) 2px solid;
@@ -7,7 +10,7 @@
     align-self: center;
 }
 
-
+/*My servers form's select*/
 .my-servers form select{
     margin-top: 10px;
     width: 100%;
@@ -18,21 +21,25 @@
     color: rgba(0, 0, 0, .57);
 }
 
+/*My servers form's select/buttom */
 .my-servers form select,.my-servers form button{
     font-family: 'ubuntu_regular';
     display: block;
 }
 
+/*My servers form's buttom*/
 .my-servers form button{
     width: 35%;
     margin: auto;
     margin-top: 10px;
 }
 
+/*Login Server container*/
 .login-server{
     margin-top: 100px;
 }
 
+/*Login/Create Server container */
 .create-server,.login-server{
     background: var(--second);
     border: var(--main) 2px solid;
@@ -40,6 +47,7 @@
     padding: 20px;
 }
 
+/*Login/Create/My servers' h2*/
 .create-server h2,.login-server h2,.my-servers h2{
     font-family: 'ubuntu_regular';
     font-size: 48px;
@@ -47,6 +55,7 @@
     text-align: center;
 }
 
+/*Create/Loign form's input*/
 .create-server form input,.login-server form input{
     font-family: 'ubuntu_regular';
     font-size: 27px;
@@ -58,6 +67,7 @@
     margin: 10px 0;
 }
 
+/*Create/Login form's button*/
 .create-server form button,
 .login-server form button{
     display: block;

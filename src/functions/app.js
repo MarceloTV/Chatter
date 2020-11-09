@@ -2,6 +2,7 @@ const Server = require('../models/server')
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 
+//Join a Server
 const server = async (req,res) => {
     if(!req.isAuthenticated()){
         return res.status(403).redirect('/')

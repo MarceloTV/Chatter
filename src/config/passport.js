@@ -2,16 +2,19 @@ const passport = require('passport')
 const local = require('passport-local').Strategy
 const User = require('../models/user')
 
+//passport serialize user 
 passport.serializeUser((user,done) => {
     done(null,user._id)
 })
 
+//passport deserialize user 
 passport.deserializeUser((id,done) => {
     User.findById(id,(err,user) => {
         done(err,user)
     })
 })
 
+//passport config
 passport.use(new local(
     {
         usernameField: 'email',

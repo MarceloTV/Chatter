@@ -1,6 +1,7 @@
 const Server = require('../models/server')
 const User = require('../models/user')
 
+//Create Server
 const createServer = async (req,res) => {
     if(!req.isAuthenticated()){
         return res.status(403).redirect('/')
@@ -40,6 +41,7 @@ const createServer = async (req,res) => {
     }
 }
 
+//Enter to server
 const loginServer = async (req,res) => {
     if(!req.isAuthenticated()){
         return res.status(403).redirect('/')
