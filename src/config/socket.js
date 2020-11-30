@@ -13,17 +13,15 @@ const socket =  async (io) => {
     })
     let users = []
 
-    io.on('connection', (socket) => {
+    io.on('connection', async (socket) => {
         //Servers Update
-        Server.find().exec((err,docs) => {
-            serversSearch = docs
-            servers = docs.map( v => {
-                return {
-                    name: v.name,
-                    users: [],
-                    serverId: v._id
-                }
-            })
+        serversSearch = await Server.find().exec()
+        servers = serversSearch.map( v => {
+            return {
+                name: v.name,
+                users: [],
+                serverId: v._id
+            }
         })
         
         //New connection
@@ -63,7 +61,7 @@ const socket =  async (io) => {
         //When a user is disconnected is remove to the serveres and user array then is emited to all servers :D
         socket.on('disconnect', reason => {
             let index = -1
-            const searchUser= users.find(v => v.id == socket.id)
+            const searchUser = users.find(v => v.id == socket.id)
             const searchUserIndex= users.findIndex(v => v.id == socket.id)
             servers.forEach((v,i) => {
                 const userFindIndex = v.users.findIndex(v => v.name == searchUser.name)
@@ -74,6 +72,9 @@ const socket =  async (io) => {
                 }
             })
 
+            if(!servers[index]){
+                return false
+            }
             io.emit(`users-${searchUser.server}`,servers[index].users)
         })
 
