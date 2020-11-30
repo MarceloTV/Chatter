@@ -8,6 +8,8 @@ const morgan = require('morgan')
 const passport = require('passport')
 const io = require('socket.io')(http)
 
+require('dotenv').config()
+
 app.use(morgan('dev'))
 
 //Sessions
@@ -16,7 +18,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     store: new store({
-        url: 'mongodb://localhost:27017/chatter',
+        url: process.env.MONGO,
         autoReconnect: true
     })
 }))
