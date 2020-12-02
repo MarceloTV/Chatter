@@ -44,6 +44,6 @@ require('./config/database')
 //Routes
 app.use('',require('./routes/index.routes'))
 
-http.listen(3000, () => {
+http.listen(process.env.PORT || 3000, () => {
     console.log('Server is connected on port',3000)
 })

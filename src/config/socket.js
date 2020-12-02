@@ -3,7 +3,7 @@ const Server = require('../models/server')
 const socket =  async (io) => {
 
     //Servers search
-    let serversSearch = await Server.find()
+    let serversSearch = await Server.find().exec()
     let servers = serversSearch.map( v => {
         return {
             name: v.name,
@@ -14,6 +14,7 @@ const socket =  async (io) => {
     let users = []
 
     io.on('connection', async (socket) => {
+        console.log('connect')
         //Servers Update
         serversSearch = await Server.find().exec()
         servers = serversSearch.map( v => {
@@ -23,7 +24,7 @@ const socket =  async (io) => {
                 serverId: v._id
             }
         })
-        
+
         //New connection
         socket.on('conn',(data) => {
             const search = servers.findIndex(v => {
@@ -43,8 +44,6 @@ const socket =  async (io) => {
                 })
                 servers[$search].users.push(v)
             })
-
-            console.log(servers)
 
             //Emit users connected to determinate server
             io.emit(`users-${data.server_id}`,servers[search].users)
@@ -75,6 +74,9 @@ const socket =  async (io) => {
             if(!servers[index]){
                 return false
             }
+            /* if(!searchUser){
+                return false
+            } */
             io.emit(`users-${searchUser.server}`,servers[index].users)
         })
 

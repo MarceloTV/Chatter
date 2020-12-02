@@ -1,0 +1,27 @@
+@media screen and (max-width: 884px){
+    .separation{
+        display: none;
+    }
+
+    .container{
+        display: block;
+    }
+
+    .my-servers,.op-servers{
+        width: 70%;
+        margin: auto;
+    }
+
+    .my-servers{
+        margin-bottom: 20px;
+    }
+
+    .login-server{
+        margin-top: 20px;
+    }
+
+    .create-server form input,.login-server form input{
+        margin: auto;
+        margin-bottom: 10px;
+    }
+}

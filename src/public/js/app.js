@@ -20,6 +20,7 @@ socket.emit('conn', {
 
 //Get Users connected
 socket.on(`users-${server_id}`, data => {
+    console.log('xd')
     //Print to the DOM
     $id('users-container').innerHTML = ''
     data.forEach(v => {

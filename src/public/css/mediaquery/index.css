@@ -1,0 +1,38 @@
+@media screen and (max-width: 960px){
+    .separation{
+        display: none;
+    }
+
+    .container {
+        display: block;
+    }
+
+    .login,.signup{
+        margin: auto !important;
+        margin-top: 10px !important;
+    }
+}
+
+@media screen and (max-width: 960px){
+    .login,.signup{
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 596px){
+    .login,.signup{
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 490px){
+    .login,.signup{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 366px){
+    .login,.signup{
+        width: 100%;
+    }
+}
