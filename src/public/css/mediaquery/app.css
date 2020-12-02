@@ -23,5 +23,16 @@
     .create-server form input,.login-server form input{
         margin: auto;
         margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .create-server form button,.login-server form button{
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .create-server form button,.login-server form button{
+        width: 45%;
     }
 }
