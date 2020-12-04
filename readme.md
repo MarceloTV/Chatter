@@ -6,4 +6,4 @@
 This app is created whit NodeJS using MongoDB as a Database and you eant to do pull request you can do this, thank you for watching and reading :D.
 </p>
 
-<p>Link de la aplicacion <a href=https://chatter-hand.herokuapp.com/>Chatter</a></p>
+<p>Aplication Link: <a href=https://chatter-hand.herokuapp.com/>Chatter</a></p>
