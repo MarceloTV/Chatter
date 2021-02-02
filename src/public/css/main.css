@@ -65,7 +65,7 @@ main{
     justify-content: space-between;
 }
 
-/*Login and dignup server container*/
+/*Login and signup server container*/
 .login,.signup{
     background: var(--second);
     border: solid 3px var(--main);
@@ -139,4 +139,15 @@ main{
     right: 50%;
     width: 0.1px;
     box-shadow: var(--main) 0 4px 4px;
+}
+
+/*Error message*/
+.error_message{
+    padding: 5px;
+    color: white;
+    background: red;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px !important;
 }

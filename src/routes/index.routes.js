@@ -42,7 +42,7 @@ Route.get('/getUser', (req,res) => {
 //Log Out
 Route.get('/logout', (req,res) => {
     if(!req.isAuthenticated()){
-        return res.status(404).redirect('/')
+        return res.status(400).redirect('/')
     }
     req.logOut()
     res.redirect('/')

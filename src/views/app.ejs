@@ -52,6 +52,9 @@
                         <input type="text" name="name" placeholder="Type the name's server">
                         <input type="password" name="password" placeholder="Type the password's server">
                         <input type="text" style="display: none;" name="id" value=<%= user.id%>>
+                        <% if (error.exist == true && error.type == "create_server") {%>
+                            <p class="error_message"><%= error.message%></p>
+                        <% } %>
                         <button type="submit">Apply</button>
                     </form>
                 </div>
@@ -63,6 +66,9 @@
                         <input type="text" name="name" placeholder="Type the name's server">
                         <input type="password" name="password" placeholder="Type the password's server">
                         <input type="text" style="display: none;" name="id" value=<%= user.id%>>
+                        <% if (error.exist == true && error.type == "login_server") {%>
+                            <p class="error_message"><%= error.message%></p>
+                        <% } %>
                         <button type="submit">Apply</button>
                     </form>
                 </div>

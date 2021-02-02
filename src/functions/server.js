@@ -5,7 +5,7 @@ const User = require('../models/user')
 const createServer = async (req,res) => {
     if(!req.isAuthenticated()){
         return res.status(403).redirect('/')
-    }
+    }    
     try{
         const {name,password,id} = req.body
         const login = await User.findById(id)
@@ -21,7 +21,7 @@ const createServer = async (req,res) => {
 
         const exist = await Server.findOne({name})
         if(exist){
-            return res.status(403).send('Server exist')
+            return res.status(400).render('app',{user:req.user,error: {exist:true,message:'Server exist',type:'create_server'}})
         }
 
         const newServer = await new Server({
@@ -58,17 +58,23 @@ const loginServer = async (req,res) => {
 
         const server = await Server.findOne({name})
         if(!server){
-            return res.status(403).send('Server does not exist')
+            return res.status(404).render('app',{user:req.user,error: {exist:true,message:'Server does not exist',type:'login_server'}})
         }
+
+        let inServer = false
 
         server.users.forEach(v => {
             if(v == id){
-                return res.status(403).send('you are in the server')
+                inServer = true;
             }
         })
 
+        if(inServer){
+            return res.status(300).render('app',{user:req.user,error: {exist:true,message:'You are in the server',type:'login_server'}})
+        }
+
         if(server.password != password){
-            return res.status(403).send('Invalid Password')
+            return  res.status(400).render('app',{user:req.user,error: {exist:true,message:'Invalid password',type:'login_server'}})
         }
 
         let usersArray = server.users

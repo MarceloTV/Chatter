@@ -5,14 +5,14 @@ const index = (req,res) => {
         return res.status(200).redirect('/app')
     }
 
-    res.status(200).render('index')
+    res.status(200).render('index',{error: {exist:false,message:null,type:null}})
 }
 
 //Render app
 const app = (req,res) => {
     //Auth verify
     if(req.isAuthenticated()){
-        return res.status(200).render('app',{user:req.user})
+        return res.status(200).render('app',{user:req.user,error: {exist:false,message:null,type:null}})
     }
 
     res.status(403).redirect('/')

@@ -30,6 +30,9 @@
                 <form action="/login" method="post">
                     <input type="email" name="email" placeholder="type your email">
                     <input type="password" name="password" placeholder="type your password">
+                    <% if (error.exist == true && error.type == "login") {%>
+                        <p class="error_message"><%= error.message%></p>
+                    <% } %>
                     <button type="submit">Send</button>
                 </form>
             </div>
@@ -46,6 +49,9 @@
                     <input type="email" name="email" placeholder="type your email">
                     <input type="text" name="name" placeholder="type your name">
                     <input type="password" name="password" placeholder="type your password">
+                    <% if (error.exist == true && error.type == "register") {%>
+                        <p class="error_message"><%= error.message%></p>
+                    <% } %>
                     <button type="submit">Send</button>
                 </form>
             </div>
