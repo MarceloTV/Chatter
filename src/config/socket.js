@@ -1,81 +1,79 @@
 const Server = require("../models/server");
+const User = require("../models/user")
+
+let users = {} 
+let servers = {}
+
 //Socket server config
 const socket = async (io) => {
-  //Servers search
-  let serversSearch = await Server.find().exec();
-  let servers = serversSearch.map((v) => {
-    return {
+  const getServers = await Server.find().exec()
+  
+  getServers.forEach(v => {
+    servers[v._id] = {
+      users: v.users,
       name: v.name,
-      users: [],
-      serverId: v._id,
-    };
-  });
-  let users = [];
+      usersConnected: []
+    }
+  })
 
   io.on("connection", async (socket) => {
-    console.log("connect");
-    //Servers Update
-    serversSearch = await Server.find().exec();
-    servers = serversSearch.map((v) => {
-      return {
-        name: v.name,
-        users: [],
-        serverId: v._id,
-      };
-    });
+    socket.on("conn", async (idUser) => {
+      if(users[idUser]){
+        users[idUser].socket = socket.id
 
-    //New connection
-    socket.on("conn", (data) => {
-      const search = servers.findIndex((v) => {
-        return v.serverId == data.server_id;
-      });
+        const myUser = await User.findById(idUser)
+        const server = users[idUser].server
 
-      users.push({
-        name: data.user_name,
-        id: socket.id,
-        server: data.server_id,
-      });
+        if(!servers[users[idUser].server].users.find(v => v == idUser)){
+          console.log(servers)
 
-      users.forEach((v) => {
-        const $search = servers.findIndex((a) => {
-          return a.serverId == v.server;
-        });
-        servers[$search].users.push(v);
-      });
-
-      //Emit users connected to determinate server
-      io.emit(`users-${data.server_id}`, servers[search].users);
-    });
-
-    //Rev=cive and emit message
-    socket.on("message", (data) => {
-      io.emit(`msg-${data.path}`, {
-        user: data.user,
-        msg: data.msg,
-      });
-    });
-
-    //When a user is disconnected is remove to the serveres and user array then is emited to all servers :D
-    socket.on("disconnect", (reason) => {
-      let index = -1;
-      const searchUser = users.find((v) => v.id == socket.id);
-      const searchUserIndex = users.findIndex((v) => v.id == socket.id);
-      servers.forEach((v, i) => {
-        const userFindIndex = v.users.findIndex(
-          (v) => v.name == searchUser.name
-        );
-        if (userFindIndex) {
-          v.users.splice(userFindIndex, 1);
-          users.splice(searchUserIndex, 1);
-          index = i;
+          return false
         }
-      });
 
-      try {
-        io.emit(`users-${searchUser.server}`, servers[index].users);
-      } catch (error) {}
-    });
-  });
+        servers[users[idUser].server].usersConnected.push(myUser)
+        
+        socket.emit("joined",(true, server))
+        socket.join(server)
+        socket.emit("joined_room", server)
+        io.to(server).emit("update_users",servers[server].usersConnected)
+
+        socket.on("message", (msg) => {
+          io.to(server).emit("get_message",msg)
+        })
+
+        socket.on("disconnect", reason => {
+          let theServersUsersConnected = servers[users[idUser].server].usersConnected
+          const findIndex = theServersUsersConnected.findIndex(v => v._id == idUser)
+          theServersUsersConnected.splice(findIndex,1)
+          servers[users[idUser].server].usersConnected = theServersUsersConnected
+          io.to(server).emit("update_users",servers[server].usersConnected)
+          delete myUser
+          delete server
+          delete users[idUser]
+        })
+      }
+    })
+
+  })
 };
 
-module.exports = socket;
+const connectNewUser = (_id,server) => {
+  users[_id] = {
+    server,
+    socket: null
+  }
+}
+
+const updateServers = (newServer) => {
+  servers[newServer._id] = {
+    users: newServer.users,
+    name: newServer.name,
+    usersConnected: []
+  }
+}
+
+const updateServerUsers = (idServer,users) => {
+  servers[idServer].users = users
+}
+
+module.exports = { socket, connectNewUser, updateServers , updateServerUsers };
