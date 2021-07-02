@@ -1,5 +1,5 @@
 const Server = require('../models/server')
-const User = require('../models/user')
+const { connectNewUser } = require("../config/socket")
 const jwt = require('jsonwebtoken')
 
 //Join a Server
@@ -30,6 +30,8 @@ const server = async (req,res) => {
         }
 
         const token = await jwt.sign({_id: serverExist._id},'Minatozaki')
+
+        connectNewUser(req.user._id,serverExist._id)
 
         res.status(200).render('chat',{token,user: req.user,server: serverExist})
 

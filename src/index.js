@@ -24,7 +24,7 @@ app.use(session({
 }))
 
 //Sockets
-require('./config/socket')(io)
+require('./config/socket').socket(io)
 
 //Configs
 app.use(express.static(path.join(__dirname,'public')))

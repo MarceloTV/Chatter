@@ -1,5 +1,6 @@
 const Server = require('../models/server')
 const User = require('../models/user')
+const { updateServers, updateServerUsers } = require('../config/socket')
 
 //Create Server
 const createServer = async (req,res) => {
@@ -34,6 +35,8 @@ const createServer = async (req,res) => {
         array.push(name)
 
         const updateUser = await User.findByIdAndUpdate(id,{servers: array})
+
+        updateServers(newServer)
 
         res.status(200).redirect('/app')
     }catch(err){
@@ -80,7 +83,8 @@ const loginServer = async (req,res) => {
         let usersArray = server.users
         usersArray.push(id)
 
-        const update = await Server.findByIdAndUpdate(server._id,{users:usersArray})
+        const update = await Server.findByIdAndUpdate(server._id,{users:usersArray},{new: true})
+        updateServerUsers(update._id,update.users)
 
         let serverArray = login.servers
         serverArray.push(server.name)
